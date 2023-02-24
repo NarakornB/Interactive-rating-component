@@ -5,33 +5,28 @@ console.log(SubmitScoreButton)
 
 
 let scoreArray =[]
-let clickState = 1
+let scoreArrayTemp =[0,1,2,3,4]
 let submitScore = 0
-
 
 for (let i = 1; i <= 5; i++) {
     scoreArray.push(document.querySelector(`.score${i}`))
     // do something with scoreElement
 }
-
-
 // change color when clicked
 scoreElements.forEach(function(scoreElement,index) {
-    console.log(submitScore)
-    scoreElement.addEventListener('click', () => {    
-        clickState = clickState+1
+    // console.log(submitScore)
+    scoreElement.addEventListener('click', () => {  
+        submitScore = index + 1
+        filterIndexScore = scoreArrayTemp.filter(score=>score !== index)
         
-        if(clickState%2 === 0) {
-            scoreArray[index].style.background = 'hsl(25, 97%, 53%)'
-            submitScore = index+1     
+        scoreArray[index].style.background = 'hsl(25, 97%, 53%)'
+       
+        // console.log(scoreArrayTemp)   
+        filterIndexScore.forEach(KeepIndex => {
+            console.log(KeepIndex)
             
-        }
-        if(clickState%2 === 1) {
-            for (let i = 0; i <= 4; i++) {
-                          
-                scoreArray[i].style.background = '#262F38' 
-            }                                
-        }
+            scoreArray[KeepIndex].style.background = '#262F38' 
+         })                             
     })   
 })
 
